@@ -1,0 +1,44 @@
+name: Windows and Android
+on:
+  push:
+    paths: ['Windows/**', 'Android/**', '.github/workflows/windows-android.yml']
+  pull_request:
+    paths: ['Windows/**', 'Android/**', '.github/workflows/windows-android.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r Windows/requirements.txt pyinstaller==6.13.0
+      - run: python -m unittest discover -s tests -v
+        working-directory: Windows
+      - run: python -m PyInstaller --noconfirm --windowed --onedir --name Bluey --collect-all keyring launch.py
+        working-directory: Windows
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Bluey-Windows
+          path: Windows/dist/Bluey/
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - run: gradle --no-daemon assembleDebug lintDebug
+        working-directory: Android
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Bluey-Android-debug
+          path: Android/app/build/outputs/apk/debug/app-debug.apk

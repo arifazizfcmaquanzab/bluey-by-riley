@@ -1,5 +1,11 @@
 # Googly Eyes
 
+## Windows + Android preview
+
+This fork adds a native Windows host and Android APK on `feat/windows-android`. See [setup, builds, feature limits, and device checks](docs/windows-android.md). It is a preview port, with a simplified character and primary-display support, rather than full Apple feature parity.
+
+The original Apple app is documented below.
+
 A blueberry character who lives on an iPhone under your Mac's screen and points at things with his own big cursor.
 
 **Now:** no voice out. Double tap him on the phone (or press ⌥Space on the Mac) to start a session: the phone's mic stays on and everything you say becomes context, but he stays quiet. **Press and hold the screen** to ask him something; let go and he answers. His reply pops up as a cute speech bubble next to his cursor (or above the phone when he isn't pointing), with a little cartoon chirp from the phone. Ask "what's this?" and he points at whatever is under your mouse. Double tap again and he goes back to follow mode.
