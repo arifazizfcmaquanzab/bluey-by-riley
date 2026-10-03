@@ -1,0 +1,9 @@
+<resources>
+    <style name="BlueyTheme" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#636BE8</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">#FFF9EB</item>
+        <item name="android:statusBarColor">#FFF9EB</item>
+    </style>
+</resources>
