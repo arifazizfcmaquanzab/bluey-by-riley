@@ -1,5 +1,6 @@
 package co.visionairy.bluey
 
+import android.annotation.SuppressLint
 import android.os.Handler
 import android.os.Looper
 import android.util.Base64
@@ -37,6 +38,8 @@ class HostLink(private val onPacket: (JSONObject) -> Unit, private val onStatus:
         }
     }
 
+    // Self-signed PC identity: trust only the exact SHA-256 copied out of band, not arbitrary certificates.
+    @SuppressLint("CustomX509TrustManager")
     fun connect(code: String) {
         disconnect()
         val current = generation

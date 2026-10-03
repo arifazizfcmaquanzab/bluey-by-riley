@@ -22,3 +22,5 @@ Android/build/
 *.apk
 Windows/dist/
 Windows/*.spec
+
+.kotlin/

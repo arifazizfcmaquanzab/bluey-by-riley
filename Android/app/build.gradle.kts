@@ -5,6 +5,7 @@ plugins {
 android {
     namespace = "co.visionairy.bluey"
     compileSdk = 35
+    buildToolsVersion = "35.0.0"
     defaultConfig {
         applicationId = "co.visionairy.bluey"
         minSdk = 26

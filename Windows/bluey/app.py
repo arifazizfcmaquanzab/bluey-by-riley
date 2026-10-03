@@ -373,4 +373,6 @@ def main():
     app = QApplication(sys.argv)
     host = Host()
     host.show()
+    if "--self-test" in sys.argv:
+        QTimer.singleShot(250, host.close)
     return app.exec()

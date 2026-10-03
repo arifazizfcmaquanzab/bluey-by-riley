@@ -129,7 +129,7 @@ class LiveVoice(private val context: Context, private val link: HostLink,
         if (responseActive) send(JSONObject().put("type", "response.cancel"))
         send(JSONObject().put("type", "conversation.item.create").put("item", JSONObject()
             .put("type", "message").put("role", "user").put("content", JSONArray().put(JSONObject()
-                .put("type", "input_text").put("text", text.take(4000)))))
+                .put("type", "input_text").put("text", text.take(4000))))))
         send(JSONObject().put("type", "response.create"))
         onState("Thinking…")
     }

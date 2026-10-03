@@ -82,7 +82,7 @@ Run from `Windows/`:
 python -m unittest discover -s tests -v
 ```
 
-Protocol tests exercise real local TLS connections, authentication rejection, framing bounds, coordinate validation, disabled action tool exposure, and action argument restrictions. GUI guard tests use Qt's offscreen mode and mocked actions. CI builds the Windows portable bundle and runs Android assembly/lint.
+Protocol tests exercise real local TLS connections, authentication rejection, framing bounds, coordinate validation, disabled action tool exposure, and action argument restrictions. GUI guard tests use Qt's offscreen mode and mocked actions. CI builds and smoke-launches the Windows portable bundle and runs Android assembly/lint. The initial 17 Python tests passed locally and on a Windows CI runner; Android debug assembly and lint also passed locally. Physical-device verification is still outstanding.
 
 Before calling this ready for daily use, test on a physical PC and phone:
 

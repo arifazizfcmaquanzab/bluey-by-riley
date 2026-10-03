@@ -20,6 +20,10 @@ jobs:
         working-directory: Windows
       - run: python -m PyInstaller --noconfirm --windowed --onedir --name Bluey --collect-all keyring launch.py
         working-directory: Windows
+      - run: |
+          $process = Start-Process -FilePath ".\dist\Bluey\Bluey.exe" -ArgumentList "--self-test" -Wait -PassThru
+          if ($process.ExitCode -ne 0) { throw "Packaged app startup failed: $($process.ExitCode)" }
+        working-directory: Windows
       - uses: actions/upload-artifact@v4
         with:
           name: Bluey-Windows
@@ -33,6 +37,8 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools platforms;android-35 build-tools;35.0.0
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
